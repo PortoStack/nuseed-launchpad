@@ -1,0 +1,187 @@
+{
+  "profile": {
+    "pageTitle": "Profile",
+    "breadcrumbLabel": "Breadcrumb",
+    "breadcrumbs": {
+      "profile": "Profile",
+      "editProfile": "Edit profile"
+    },
+    "menu": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Log out"
+    },
+    "role": {
+      "executive": "Executive",
+      "head": "Department Head",
+      "pm": "Project Manager",
+      "researcher": "Researcher",
+      "entrepreneur": "Entrepreneur",
+      "coach": "Coach",
+      "external": "External person",
+      "student": "Student",
+      "staff": "Support Staff",
+      "admin": "Administrator",
+      "guest": "Guest"
+    },
+    "tabs": {
+      "project": "Project",
+      "about": "About",
+      "deals": "Related Deals"
+    },
+    "sections": {
+      "personalInformation": "Personal information",
+      "aboutMe": "About Me",
+      "education": "Education",
+      "contact": "Contact",
+      "expertise": "Expertise",
+      "company": "Company Information",
+      "participationHistory": "Participation History"
+    },
+    "educationLevels": {
+      "lower-secondary": "Lower secondary",
+      "upper-secondary": "Upper secondary",
+      "bachelor": "Bachelor's degree",
+      "master": "Master's degree",
+      "doctorate": "Doctorate"
+    },
+    "educationFields": {
+      "studyProgramTh": "Study program (Thai)",
+      "studyProgramEn": "Study program (English, optional)",
+      "facultyTh": "Faculty / major (Thai)",
+      "facultyEn": "Faculty / major (English, optional)",
+      "schoolTh": "School (Thai)",
+      "schoolEn": "School (English, optional)",
+      "universityTh": "University (Thai)",
+      "universityEn": "University (English, optional)",
+      "studyProgram": "Study program",
+      "faculty": "Faculty",
+      "school": "School",
+      "university": "University"
+    },
+    "companyLabels": {
+      "regNo": "Registration No.",
+      "skus": "Products / SKUs",
+      "budget": "Budget received",
+      "entrepreneurType": "Entrepreneur type",
+      "registeredCapital": "Registered capital (THB)",
+      "productsServices": "Products/services"
+    },
+    "participationRoles": {
+      "lead": "Project Manager",
+      "researcher": "Researcher",
+      "coach": "Coach",
+      "advisor": "Coach",
+      "entrepreneur": "Entrepreneur",
+      "member": "Member"
+    },
+    "contactLabels": {
+      "address": "Address",
+      "tel": "Tel.",
+      "emails": "Emails"
+    },
+    "actions": {
+      "editProfile": "Edit Profile",
+      "cancel": "Cancel",
+      "save": "Save Changes"
+    },
+    "availability": {
+      "available": "Available for new requests",
+      "unavailable": "Not available"
+    },
+    "emptyState": {
+      "noProjectsTitle": "No project data available",
+      "noProjectsDesc": "Projects you join will appear here",
+      "noDealsTitle": "No related deals yet",
+      "noDealsDesc": "Requirements matched to this researcher will appear here"
+    },
+    "form": {
+      "username": "Username",
+      "usernameHint": "Set once: 3–32 characters, starting with an English letter. Use letters, numbers, dots, underscores or hyphens. Email login remains available.",
+      "usernameTaken": "This username is already in use. Choose another one.",
+      "editTitle": "Edit Profile",
+      "editDesc": "Update your profile information below.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "titlePrefix": "Title (e.g., Dr., Mr.)",
+      "thaiName": "Thai name",
+      "englishName": "English name",
+      "nameRequirement": "Enter your Thai first and last names. English is optional.",
+      "firstNameTh": "First name (Thai)",
+      "lastNameTh": "Last name (Thai)",
+      "titlePrefixTh": "Thai title (e.g., ดร., นาย)",
+      "firstNameEn": "First name (English)",
+      "lastNameEn": "Last name (English)",
+      "titlePrefixEn": "English title (e.g., Dr., Mr.)",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "about": "About Me",
+      "address": "Address",
+      "tags": "Topic Tags",
+      "tagsPlaceholder": "Type a tag and press Enter",
+      "removeTag": "Remove {tag}",
+      "tagPicker": {
+        "mainCategory": "Main category",
+        "tag": "Tag",
+        "chooseMainCategory": "Choose a main category",
+        "chooseMainCategoryFirst": "Choose a main category first",
+        "chooseTag": "Choose a tag",
+        "loading": "Loading tags...",
+        "loadError": "Could not load the tag catalog.",
+        "noTags": "No available tags in this category.",
+        "removeTag": "Remove {tag}"
+      },
+      "education": {
+        "englishOptional": "English is optional. The English profile uses the original text when no translation is provided.",
+        "title": "Education",
+        "description": "Add as many education levels as needed. At least one complete entry is required.",
+        "add": "Add education level",
+        "remove": "Remove education entry {index}",
+        "level": "Education level",
+        "levelPlaceholder": "Select an education level",
+        "studyProgram": "Study program",
+        "faculty": "Faculty",
+        "school": "School",
+        "university": "University",
+        "completeRow": "Complete the education level and all fields."
+      },
+      "saveSuccess": "Profile saved successfully.",
+      "saveOnDeviceSuccess": "Profile saved on this device.",
+      "saveFailed": "Could not save your profile. Please try again.",
+      "confirmSave": {
+        "title": "Confirm profile changes",
+        "description": "Do you want to save these profile changes?",
+        "back": "Back to edit",
+        "confirm": "Confirm",
+        "saving": "Saving..."
+      }
+    },
+    "logoutConfirm": {
+      "title": "Log Out",
+      "desc": "Are you sure you want to log out of your account?",
+      "cancel": "Cancel",
+      "confirm": "Log Out"
+    },
+    "entrepreneurTypes": {
+      "limited_company": "Limited company",
+      "community_enterprise": "Community enterprise",
+      "limited_partnership": "Limited partnership"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "max": "Must not exceed {count} characters or items.",
+      "invalid": "Check this field and its related selections.",
+      "name": "Use letters, spaces, periods, hyphens or name apostrophes, with at least one letter.",
+      "text": "Remove control or invisible characters.",
+      "email": "Enter a valid email address.",
+      "emailExists": "An account already uses this email.",
+      "phone": "Enter a Thai phone number with 9–10 digits, starting with 0.",
+      "duplicate": "Remove duplicate entries.",
+      "country": "Country and calling code",
+      "countrySearch": "Search countries or calling codes",
+      "noCountries": "No countries found",
+      "phoneHint": "Enter digits only, starting with 0: 9 digits for a landline or 10 for a mobile number.",
+      "educationLimit": "You can add up to 10 education records."
+    }
+  }
+}

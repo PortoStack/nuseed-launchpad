@@ -1,0 +1,85 @@
+{
+  "tagReview": {
+    "title": "ตรวจสอบ Tag (Tag Review)",
+    "description": "จัดการ Tag แนวคิดใหม่ และดูแลแคตตาล็อก Tag กลาง",
+    "tabs": {
+      "queue": "คิวรอตรวจสอบ",
+      "catalog": "แคตตาล็อก Tag"
+    },
+    "queue": {
+      "empty": "ไม่มี Tag ที่รอตรวจสอบ",
+      "fromRequirement": "จาก Requirement",
+      "viewRequirement": "ดูรายละเอียด Requirement",
+      "sourceRequirement": "Requirement ต้นทาง",
+      "nearMatches": "Tag ที่ใกล้เคียง",
+      "noNearMatches": "ไม่พบ Tag ที่ใกล้เคียงในแคตตาล็อก",
+      "approve": "อนุมัติเป็น Tag ใหม่",
+      "merge": "รวมเข้ากับ Tag เดิม",
+      "reject": "ปฏิเสธ",
+      "cancel": "ยกเลิก",
+      "saveError": "บันทึกผลตรวจสอบไม่สำเร็จ กรุณาลองใหม่"
+    },
+    "approveForm": {
+      "title": "อนุมัติ Tag ใหม่",
+      "kindLabel": "ประเภท Tag",
+      "mainCategoryLabel": "ประเภทหลัก",
+      "reviewerLabel": "ผู้ตรวจสอบ",
+      "submit": "อนุมัติ",
+      "saveError": "อนุมัติ Tag ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง"
+    },
+    "mergeForm": {
+      "title": "รวมเข้ากับ Tag เดิม",
+      "targetLabel": "รวมเข้ากับ",
+      "targetPlaceholder": "เลือก Tag...",
+      "submit": "รวม Tag",
+      "saveError": "รวม Tag ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง"
+    },
+    "kinds": {
+      "business": "ธุรกิจ",
+      "technical": "เทคนิค"
+    },
+    "catalog": {
+      "columns": {
+        "label": "Tag",
+        "kind": "ประเภท Tag",
+        "mainCategory": "ประเภทหลัก",
+        "flagship": "Flagship",
+        "parentCategory": "หมวดแม่",
+        "status": "สถานะ",
+        "reviewer": "ผู้ตรวจสอบ",
+        "updatedAt": "อัปเดตล่าสุด"
+      },
+      "statuses": {
+        "active": "ใช้งานอยู่",
+        "deprecated": "เลิกใช้"
+      },
+      "filters": {
+        "searchPlaceholder": "ค้นหา Tag...",
+        "mainCategory": "ประเภทหลัก",
+        "childTag": "หมวดหมู่ย่อย",
+        "allCategories": "-- ทุกประเภท --",
+        "all": "ทั้งหมด",
+        "clear": "ล้างตัวกรอง"
+      },
+      "createTag": "สร้าง Tag",
+      "flagship": "Flagship Project",
+      "empty": "ยังไม่มี Tag ในแคตตาล็อก",
+      "noResults": "ไม่พบ Tag ที่ตรงกับตัวกรอง"
+    },
+    "edit": {
+      "title": "แก้ไข Tag",
+      "createTitle": "สร้าง Tag",
+      "labelLabel": "ชื่อ Tag",
+      "kindLabel": "ประเภท Tag",
+      "mainCategoryLabel": "ประเภทหลัก",
+      "statusLabel": "สถานะ",
+      "save": "บันทึกการเปลี่ยนแปลง",
+      "create": "สร้าง Tag",
+      "saving": "กำลังบันทึก...",
+      "close": "ปิด",
+      "saveError": "เกิดข้อผิดพลาดในการบันทึก กรุณาลองใหม่อีกครั้ง",
+      "forbidden": "คุณไม่มีสิทธิ์แก้ไข Tag catalog",
+      "labelTaken": "ชื่อนี้ซ้ำกับชื่อหรือคำพ้องของ Tag อื่นแล้ว"
+    }
+  }
+}

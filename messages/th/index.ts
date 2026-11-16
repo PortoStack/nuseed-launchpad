@@ -1,0 +1,39 @@
+import matching from "./matching.json";
+import tagReview from "./tagReview.json";
+import requirement from "./requirement.json";
+import funding from "./funding.json";
+import people from "./people.json";
+import businessLifecycle from "./businessLifecycle.json";
+import sidebar from "./sidebar.json";
+import auth from "./auth.json";
+import notifications from "./notifications.json";
+import profile from "./profile.json";
+import dashboard from "./dashboard.json";
+
+const messages = {
+  ...matching,
+  ...tagReview,
+  ...requirement,
+  ...funding,
+  ...people,
+  ...businessLifecycle,
+  ...sidebar,
+  ...auth,
+  ...notifications,
+  ...profile,
+  ...dashboard,
+  common: {
+    appName: "NU SEED Launchpad",
+    all: "ทั้งหมด",
+    save: "บันทึก",
+    cancel: "ยกเลิก",
+    delete: "ลบ",
+    search: "ค้นหา...",
+    noData: "ไม่พบข้อมูล",
+    loading: "กำลังโหลด...",
+    tagMatching: "Tag Matching",
+    tagReview: "Tag Review & Catalog",
+  },
+};
+
+export default messages;

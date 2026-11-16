@@ -1,0 +1,216 @@
+{
+  "requirement": {
+    "list": {
+      "title": "Requirement Intake",
+      "description": "Captured business and research requirements from various intake channels",
+      "newRequirement": "New Requirement",
+      "edit": "Edit",
+      "searchPlaceholder": "Search by keyword, entrepreneur, or problem...",
+      "filterStatus": "Status",
+      "filterNeedType": "Need Type",
+      "allStatuses": "All Statuses",
+      "allNeedTypes": "All Need Types",
+      "empty": "No requirements captured yet",
+      "emptySearch": "No requirements match the search filter",
+      "columns": {
+        "owner": "Owner / Source",
+        "needType": "Need Type",
+        "status": "Status",
+        "tags": "Tags",
+        "updatedAt": "Updated"
+      }
+    },
+    "create": {
+      "title": "New Requirement Intake",
+      "description": "Capture raw narrative, analyze keyword tags, and structure problem dimensions",
+      "backToList": "Back to Requirements",
+      "rawTextLabel": "Raw Requirement Narrative",
+      "rawTextPlaceholder": "Describe entrepreneur need, pain points, or project background in detail...",
+      "analyzeButton": "Analyze Tags",
+      "analyzing": "Analyzing...",
+      "tagsSectionTitle": "Suggested Concept Tags",
+      "tagsSectionDesc": "Check the tags you want to use, uncheck those you do not, and rename new tags before saving.",
+      "entrepreneurLabel": "Entrepreneur / Organization Name",
+      "entrepreneurPlaceholder": "e.g. Bang Krathum Dried Banana Enterprise",
+      "sourceChannelLabel": "Source Channel",
+      "sourceChannels": {
+        "line": "LINE",
+        "phone": "Phone Call",
+        "seminar": "Seminar / Event",
+        "form": "Web Form",
+        "interview": "Interview"
+      },
+      "needTypeLabel": "Need Type (Select ≥1)",
+      "needTypeRequired": "At least one Need Type is required",
+      "problemStructureTitle": "Structured Problem Dimensions (Optional)",
+      "problemStructureDesc": "Break down the core problem to enhance matching quality",
+      "fields": {
+        "problem": "Problem / Symptoms (อาการ)",
+        "problemPlaceholder": "e.g. Uneven color and moisture variations across batches",
+        "object": "Object / Product (วัตถุ)",
+        "objectPlaceholder": "e.g. Sun-dried namwa banana",
+        "context": "Context / Environment (บริบท)",
+        "contextPlaceholder": "e.g. Solar dome combined with hot air",
+        "outcome": "Desired Outcome (ผลลัพธ์)",
+        "outcomePlaceholder": "e.g. Uniform golden color, moisture <15%",
+        "constraint": "Constraints / Limitations (ข้อจำกัด)",
+        "constraintPlaceholder": "e.g. Renovation budget under 150,000 THB"
+      },
+      "submit": "Save Requirement",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "saveSuccess": "Requirement saved successfully",
+      "saveError": "Failed to save requirement. Please try again."
+    },
+    "edit": {
+      "title": "Edit Requirement",
+      "description": "Update the requirement narrative, source, need types, problem dimensions and concept tags.",
+      "submit": "Save Changes",
+      "saveError": "Failed to save changes. Please try again.",
+      "noSourceChannel": "Not specified"
+    },
+    "detail": {
+      "backToList": "Back to Requirements",
+      "notFound": "Requirement not found",
+      "rawTextTitle": "Raw Requirement Narrative",
+      "needTypesTitle": "Need Type",
+      "problemStructureTitle": "Structured Problem Dimensions",
+      "noStructure": "No structured problem dimensions recorded",
+      "tagsTitle": "Concept Tags",
+      "unnamedEntrepreneur": "Unnamed entrepreneur",
+      "createdAt": "Created",
+      "updatedAt": "Last updated",
+      "save": "Save Changes",
+      "saving": "Saving...",
+      "saveSuccess": "Changes saved",
+      "saveError": "Failed to save changes. Please try again.",
+      "findMatches": "Find Matches"
+    },
+    "statuses": {
+      "draft": "Draft",
+      "tagged": "Tagged",
+      "need_review": "Need Review"
+    },
+    "needTypes": {
+      "product": "Product",
+      "solution": "Solution",
+      "prototype": "Prototype",
+      "consulting": "Consulting",
+      "testing": "Testing",
+      "reference": "Reference"
+    },
+    "tagAdder": {
+      "trigger": "Add tag",
+      "catalogChoice": "Choose catalog tag",
+      "newChoice": "Propose new tag",
+      "searchLabel": "Search catalog",
+      "searchPlaceholder": "Search tag names...",
+      "catalogLabel": "Catalog tag",
+      "chooseCatalog": "Select a tag...",
+      "emptyCatalog": "No available tags match your search.",
+      "uncategorized": "Uncategorized",
+      "newName": "New tag name",
+      "newPlaceholder": "Enter a new concept tag",
+      "reviewHint": "New tags are sent to Tag Review when you save this requirement.",
+      "addCatalog": "Add selected tag",
+      "addNew": "Add new tag",
+      "cancel": "Cancel",
+      "loading": "Loading tag catalog...",
+      "loadError": "Could not load the tag catalog.",
+      "retry": "Retry",
+      "duplicateRequirement": "This tag is already in the requirement.",
+      "duplicateCatalog": "This name already exists in the catalog. Choose a catalog tag instead."
+    },
+    "tags": {
+      "newConcept": "New Concept",
+      "accepted": "Accepted",
+      "accept": "Accept",
+      "deselect": "Deselect tag",
+      "remove": "Remove",
+      "confidence": "Confidence",
+      "confidenceHelp": "Text match: {score}%. This is a suggestion score, not tag approval.",
+      "selectionHelp": "Check to use this tag; uncheck to exclude it. Selecting a new tag does not approve it.",
+      "editLabel": "Edit tag name: {label}",
+      "noTags": "Click 'Analyze Tags' to extract keyword tags from narrative"
+    },
+    "form": {
+      "backToList": "Back to Requirements",
+      "title": "New Requirement Intake",
+      "description": "Standard requirement proposal submission form according to NU Science Park IRTC criteria",
+      "badge": "Auto Pre-Matching",
+      "sections": {
+        "enterprise": "1. Enterprise / Organization Information",
+        "project": "2. Project & Industry Platform",
+        "problem": "3. Problem Statement & Technological Needs"
+      },
+      "fields": {
+        "companyName": "Enterprise / Organization / Company Name",
+        "companyNamePlaceholder": "e.g. Theppitak Group Co., Ltd., Community Enterprise...",
+        "entrepreneurType": "Enterprise Type",
+        "province": "Province",
+        "provincePlaceholder": "e.g. Phitsanulok, Tak, Sukhothai",
+        "contactName": "Contact Person / Decision Maker Name",
+        "contactNamePlaceholder": "e.g. Waranya Homthoop, Saruta Chainok",
+        "phone": "Contact Phone Number",
+        "phonePlaceholder": "e.g. 086-929-1745",
+        "email": "Email (Optional)",
+        "emailPlaceholder": "contact@enterprise.com",
+        "projectTitle": "Proposed Project Title",
+        "projectTitlePlaceholder": "e.g. High Pressure Processing (HPP) Technology for Pomegranate Juice",
+        "industryCluster": "Target Industry Cluster (Select 1 primary)",
+        "budget": "Estimated Project Budget (THB)",
+        "targetProgram": "Target Funding Program",
+        "assistanceTypes": "Required Assistance Types (Select multiple)",
+        "problemStatement": "Problem Statement & Technological Needs",
+        "problemStatementPlaceholder": "Describe current pain points, e.g. perishable produce requiring shelf-life extension, local raw materials needing bioactive extraction for cosmetic formulations, testing and GMP compliance...",
+        "extractAi": "Extract Tags with AI",
+        "extracting": "Extracting...",
+        "tagsTitle": "Relevant Technology / Expertise Tags",
+        "tagsHint": "(AI uses these tags to match researchers and funding programs)",
+        "tagsEmpty": "No tags yet (Click 'Extract Tags with AI' or type custom tags below)",
+        "tagInputPlaceholder": "Add custom tag e.g. Bioactive Extraction, HPP, Packaging...",
+        "addTag": "Add",
+        "cancel": "Cancel",
+        "submit": "Save & Run Auto-Matching",
+        "submitting": "Saving and auto-matching with AI..."
+      },
+      "entrepreneurTypes": {
+        "community": "Community Enterprise / Career Group",
+        "sme": "SME / Co., Ltd. / Partnership",
+        "startup": "Individual / Start-up"
+      },
+      "prefixes": {
+        "mr": "Mr.",
+        "mrs": "Mrs.",
+        "ms": "Ms."
+      },
+      "programs": {
+        "irtc": "IRTC - Industrial Research & Technology Capacity",
+        "p7": "P7 - Community Technology Transfer Program",
+        "p4": "P4 - Technology Commercialization Program",
+        "bce": "BCE - Business Community Elevation Platform"
+      },
+      "industries": {
+        "agriculture_food": "Agriculture and Food Processing",
+        "cosmetics_herb": "Cosmetics, Cosmeceuticals & Herbal Products",
+        "it_digital": "Information Technology (IT & Digital Content)",
+        "medical_biotech": "Medical & Biotechnology",
+        "energy_materials": "Renewable Energy & Materials Technology",
+        "machinery_engineering": "Machinery & Engineering",
+        "rice_flagship": "Full-chain Rice Industry (Flagship)",
+        "others": "Other Industries"
+      },
+      "assistance": {
+        "new_product": "New Product Development",
+        "shelf_life": "Process Improvement / Shelf-life Extension",
+        "standard_gmp": "Quality & Safety Standards (FDA / GMP)",
+        "marketing_bmc": "Marketing Strategy & Business Model Canvas (BMC)"
+      },
+      "validation": {
+        "companyRequired": "Please specify enterprise / company name",
+        "problemRequired": "Please specify problem statement and project needs",
+        "extractAlert": "Please enter problem description or requirement details before AI tag extraction"
+      }
+    }
+  }
+}

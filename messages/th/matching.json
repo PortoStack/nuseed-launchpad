@@ -1,0 +1,54 @@
+{
+  "matching": {
+    "changeRequirement": "เปลี่ยน Requirement",
+    "picker": {
+      "title": "เลือก Requirement เพื่อเริ่มจับคู่",
+      "description": "เลือกโจทย์เพื่อค้นหานักวิจัย โค้ช ที่ปรึกษา และแหล่งทุนที่เหมาะสม",
+      "search": "ค้นหา Requirement...",
+      "newRequirement": "เพิ่มความต้องการใหม่",
+      "view": "ดูผลจับคู่",
+      "empty": "ไม่พบ Requirement ที่ตรงกับการค้นหา",
+      "statuses": { "draft": "ร่าง", "tagged": "แท็กแล้ว", "need_review": "รอตรวจสอบ" }
+    },
+    "relations": {
+      "label": "รูปแบบการจับคู่",
+      "entrepreneur-researcher": "ผู้ประกอบการ–นักวิจัย",
+      "entrepreneur-funding": "ผู้ประกอบการ–เงินทุน",
+      "funding-researcher": "เงินทุน–นักวิจัย",
+      "funding-researcher-entrepreneur": "เงินทุน–นักวิจัย–ผู้ประกอบการ",
+      "empty": "ยังไม่พบคู่ที่ตรงกับเงื่อนไข"
+    },
+    "title": "ค้นหาการจับคู่ (Matching Workspace)",
+    "description": "นักวิจัยและแหล่งทุนที่เปิดรับ จัดอันดับตามความเข้ากันกับ Requirement นี้ พร้อมแท็กที่เป็นเหตุผลของคะแนน",
+    "noRequirementTitle": "กรุณาเลือก Requirement ก่อน",
+    "noRequirementDesc": "เปิดหน้า Requirement แล้วกด \"ค้นหาการจับคู่\" เพื่อดูนักวิจัยและแหล่งทุนที่จัดอันดับไว้ที่นี่",
+    "backToRequirements": "ไปหน้า Requirement",
+    "requirementSummary": {
+      "needTypes": "ประเภทความต้องการ",
+      "acceptedTags": "แท็กที่ยอมรับแล้ว"
+    },
+    "tabs": {
+      "researchers": "นักวิจัย",
+      "coaches": "โค้ช / ที่ปรึกษา",
+      "funding": "แหล่งทุน"
+    },
+    "score": "คะแนนความเข้ากัน",
+    "explain": {
+      "exact": "ตรงเป๊ะ",
+      "related": "ใกล้เคียง",
+      "missing": "ไม่พบ"
+    },
+    "empty": {
+      "researchersTitle": "ยังไม่พบนักวิจัยที่จับคู่ได้",
+      "researchersDesc": "ยังไม่มีนักวิจัยที่มีแท็กตรงกับ Requirement นี้",
+      "fundingTitle": "ยังไม่พบแหล่งทุนที่เปิดรับและจับคู่ได้",
+      "fundingDesc": "ยังไม่มีแหล่งทุนที่เปิดรับซึ่งมีแท็กตรงกับ Requirement นี้",
+      "coachesTitle": "ยังไม่พบโค้ชหรือที่ปรึกษาที่จับคู่ได้",
+      "coachesDesc": "ยังไม่มีโค้ชหรือที่ปรึกษาที่มีแท็กตรงกับ Requirement นี้",
+      "noAcceptedTagsTitle": "ยังไม่มีแท็กที่ยอมรับ",
+      "noAcceptedTagsDesc": "Requirement นี้ยังไม่มีแท็กที่ยอมรับแล้ว จึงยังจับคู่ไม่ได้ กรุณาตรวจสอบและยอมรับแท็กที่หน้า Requirement ก่อน"
+    },
+    "findMatches": "ค้นหาการจับคู่",
+    "createDeal": "สร้าง Deal"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "sidebar": {
+    "brand": "NU SEED Launchpad",
+    "groups": {
+      "matching": "ระบบจับคู่ความต้องการ",
+      "taxonomy": "คลังแท็กและหมวดหมู่"
+    },
+    "items": {
+      "dashboard": "แดชบอร์ดภาพรวม",
+      "matching": "Tag Matching",
+      "newRequirement": "เพิ่มความต้องการใหม่",
+      "requirement": "ความต้องการ",
+      "tagCatalog": "คลังแท็กมาตรฐาน",
+      "tagReview": "ตรวจรับรองแท็ก"
+    },
+    "controls": {
+      "openMenu": "เปิดเมนู",
+      "collapseSidebar": "ย่อเมนู",
+      "expandSidebar": "ขยายเมนู",
+      "switchLanguage": "เปลี่ยนภาษา",
+      "userMenu": "เมนูผู้ใช้",
+      "signOut": "ออกจากระบบ"
+    },
+    "breadcrumb": {
+      "projects": "โครงการ",
+      "create": "สร้าง",
+      "edit": "แก้ไข",
+      "profile": "โปรไฟล์",
+      "details": "รายละเอียด"
+    },
+    "status": {
+      "database": "Supabase SQL",
+      "aiEngine": "Mock AI Engine",
+      "online": "Online",
+      "active": "Active"
+    }
+  }
+}

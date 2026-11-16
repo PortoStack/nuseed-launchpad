@@ -1,0 +1,38 @@
+{
+  "sidebar": {
+    "brand": "NU SEED Launchpad",
+    "groups": {
+      "matching": "Matching System",
+      "taxonomy": "Taxonomy & Tags"
+    },
+    "items": {
+      "dashboard": "Dashboard",
+      "matching": "Tag Matching",
+      "newRequirement": "New Requirement",
+      "requirement": "Requirement",
+      "tagCatalog": "Tag Catalog",
+      "tagReview": "Review Queue"
+    },
+    "controls": {
+      "openMenu": "Open menu",
+      "collapseSidebar": "Collapse sidebar",
+      "expandSidebar": "Expand sidebar",
+      "switchLanguage": "Switch language",
+      "userMenu": "User menu",
+      "signOut": "Sign Out"
+    },
+    "breadcrumb": {
+      "projects": "Projects",
+      "create": "Create",
+      "edit": "Edit",
+      "profile": "Profile",
+      "details": "Details"
+    },
+    "status": {
+      "database": "Supabase SQL",
+      "aiEngine": "Mock AI Engine",
+      "online": "Online",
+      "active": "Active"
+    }
+  }
+}

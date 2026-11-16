@@ -1,0 +1,85 @@
+{
+  "tagReview": {
+    "title": "Tag Review",
+    "description": "Resolve new concept tags and manage the shared tag catalog",
+    "tabs": {
+      "queue": "Review Queue",
+      "catalog": "Tag Catalog"
+    },
+    "queue": {
+      "empty": "No tags pending review",
+      "fromRequirement": "From requirement",
+      "viewRequirement": "View requirement",
+      "sourceRequirement": "Source requirement",
+      "nearMatches": "Possible matches",
+      "noNearMatches": "No similar tags found in the catalog",
+      "approve": "Approve as New Tag",
+      "merge": "Merge",
+      "reject": "Reject",
+      "cancel": "Cancel",
+      "saveError": "The decision could not be saved. Please try again."
+    },
+    "approveForm": {
+      "title": "Approve New Tag",
+      "kindLabel": "Tag type",
+      "mainCategoryLabel": "Main category",
+      "reviewerLabel": "Reviewer",
+      "submit": "Approve",
+      "saveError": "Failed to approve tag. Please try again."
+    },
+    "mergeForm": {
+      "title": "Merge Into Existing Tag",
+      "targetLabel": "Merge into",
+      "targetPlaceholder": "Select a tag...",
+      "submit": "Merge",
+      "saveError": "Failed to merge tag. Please try again."
+    },
+    "kinds": {
+      "business": "Business",
+      "technical": "Technical"
+    },
+    "catalog": {
+      "columns": {
+        "label": "Tag",
+        "kind": "Tag type",
+        "mainCategory": "Main category",
+        "flagship": "Flagship",
+        "parentCategory": "Parent Category",
+        "status": "Status",
+        "reviewer": "Reviewer",
+        "updatedAt": "Updated"
+      },
+      "statuses": {
+        "active": "Active",
+        "deprecated": "Deprecated"
+      },
+      "filters": {
+        "searchPlaceholder": "Search Tag...",
+        "mainCategory": "Main category",
+        "childTag": "Child category",
+        "allCategories": "-- All categories --",
+        "all": "All",
+        "clear": "Clear filters"
+      },
+      "createTag": "Create tag",
+      "flagship": "Flagship Project",
+      "empty": "No tags in the catalog yet",
+      "noResults": "No tags match the selected filters"
+    },
+    "edit": {
+      "title": "Edit Tag",
+      "createTitle": "Create Tag",
+      "labelLabel": "Tag name",
+      "kindLabel": "Tag type",
+      "mainCategoryLabel": "Main category",
+      "statusLabel": "Status",
+      "save": "Save Changes",
+      "create": "Create tag",
+      "saving": "Saving...",
+      "close": "Close",
+      "saveError": "Failed to save changes. Please try again.",
+      "forbidden": "You do not have permission to change the tag catalog.",
+      "labelTaken": "This name is already used by another tag or synonym."
+    }
+  }
+}

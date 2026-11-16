@@ -1,0 +1,7 @@
+{
+  "notifications": {
+    "riskTitle": "Projects at risk",
+    "riskEmpty": "No projects need attention right now.",
+    "riskBell": "{count, plural, =0 {Project alerts} one {Project alerts, # project at risk} other {Project alerts, # projects at risk}}"
+  }
+}

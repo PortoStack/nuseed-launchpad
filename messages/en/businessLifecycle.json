@@ -1,0 +1,21 @@
+{
+  "businessLifecycle": {
+    "delete": "Move to trash",
+    "restore": "Restore",
+    "deletedRecords": "Deleted records",
+    "actions": "Actions",
+    "confirmTitle": "Move this record to trash?",
+    "confirmDescription": "The record will be hidden and kept for recovery. Its history will be retained.",
+    "cancel": "Cancel",
+    "pending": "Moving to trash…",
+    "trashDescription": "Restore a record to use it again. Its original ID and history will be preserved.",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "empty": "No deleted records",
+    "deletedAt": "Deleted at",
+    "conflict": "This action is blocked by linked records or a duplicate tag name. Delete linked Deals before deleting a Requirement; restore its Requirement before restoring a Deal.",
+    "forbidden": "You do not have permission for this action.",
+    "notFound": "This record no longer exists. Refresh the list.",
+    "error": "The action could not be completed. Please try again."
+  }
+}

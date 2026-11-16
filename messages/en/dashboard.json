@@ -1,0 +1,73 @@
+{
+  "dashboard": {
+    "title": "Tag Matching Dashboard",
+    "description": "Analytics for enterprise needs, researcher expertise matching, and innovation funding programs, NU Science Park",
+    "newRequirement": "New Requirement",
+    "matchingWorkspace": "Matching Workspace",
+    "filters": {
+      "label": "Tag Matching Filters",
+      "cluster": "Industry Cluster",
+      "program": "Target Funding Program",
+      "status": "Matching Status",
+      "all": "All",
+      "matched": "Matched",
+      "pending": "Pending / Open",
+      "reset": "Reset Filters",
+      "filteredResults": "Found {count} projects matching filters"
+    },
+    "kpi": {
+      "totalRequirements": "Total Requirements",
+      "totalBudget": "Total Budget",
+      "projectsUnit": "Projects",
+      "active": "Active",
+      "fitScore": "AI Compatibility (Fit Score)",
+      "fitScoreAvg": "Average AI Fit Score",
+      "fitScoreEngine": "Powered by Smart AI Engine",
+      "high": "High",
+      "expertsPool": "Available Experts & Researchers",
+      "expertsUnit": "Experts",
+      "expertsAvailable": "Available",
+      "expertsBreakdown": "Tech Researchers {researchers} • Coaches/Advisors {coaches}",
+      "standardTags": "Standard Taxonomy Tags",
+      "tagsUnit": "Tags",
+      "viewAll": "View All →",
+      "clustersCovered": "Covering 6 Industry Clusters"
+    },
+    "clusters": {
+      "title": "Requirement Distribution by Industry Cluster",
+      "description": "Proportion of enterprise needs categorized by technology sector",
+      "projectsUnit": "Projects"
+    },
+    "tags": {
+      "topTagsTitle": "Top Matched Technology Tags"
+    },
+    "programs": {
+      "title": "Target Funding Programs",
+      "description": "Funding and budget frameworks supporting requirement matching",
+      "projectsUnit": "Projects",
+      "budgetLimit": "Limit:"
+    },
+    "engine": {
+      "title": "System Architecture Status",
+      "database": "Supabase PostgreSQL",
+      "ai": "Mock AI Matching Engine",
+      "online": "Online",
+      "active": "Active (0ms)"
+    },
+    "table": {
+      "title": "Recent Matched Requirements & Projects",
+      "description": "Click on a project to open the Matching Workspace or reassign researchers/funding",
+      "viewAll": "View All Requirements",
+      "empty": "No requirements in the system yet. Click \"New Requirement\" above to get started.",
+      "colProject": "Project / Enterprise",
+      "colCluster": "Industry Cluster",
+      "colResearcher": "Matched Lead Researcher",
+      "colFunding": "Target Funding",
+      "colFit": "Fit Score",
+      "colAction": "Action",
+      "openWorkspace": "Open Workspace",
+      "analyzing": "Analyzing...",
+      "pending": "Pending"
+    }
+  }
+}

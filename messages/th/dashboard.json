@@ -1,0 +1,73 @@
+{
+  "dashboard": {
+    "title": "แดชบอร์ดการจับคู่ความต้องการ",
+    "description": "ระบบวิเคราะห์สถิติความต้องการผู้ประกอบการ การจับคู่ความเชี่ยวชาญนักวิจัย และแหล่งทุนนวัตกรรม อุทยานวิทยาศาสตร์ ม.นเรศวร",
+    "newRequirement": "เพิ่มความต้องการใหม่",
+    "matchingWorkspace": "Matching Workspace",
+    "filters": {
+      "label": "ตัวกรองการจับคู่แท็ก (Tag Matching Filters)",
+      "cluster": "กลุ่มอุตสาหกรรม (Industry Cluster)",
+      "program": "แผนงานทุนเป้าหมาย (Funding Program)",
+      "status": "สถานะการจับคู่ (Matching Status)",
+      "all": "ทั้งหมด",
+      "matched": "จับคู่แล้ว (Matched)",
+      "pending": "รอการจับคู่ (Pending)",
+      "reset": "ล้างตัวกรอง",
+      "filteredResults": "พบ {count} โครงการที่ตรงกับเงื่อนไข"
+    },
+    "kpi": {
+      "totalRequirements": "โจทย์ความต้องการทั้งหมด",
+      "totalBudget": "งบประมาณรวม",
+      "projectsUnit": "โครงการ",
+      "active": "Active",
+      "fitScore": "อัตราความเข้ากันได้ (Fit Score)",
+      "fitScoreAvg": "เฉลี่ย AI Fit Score",
+      "fitScoreEngine": "จับคู่ด้วย Smart AI Engine",
+      "high": "High",
+      "expertsPool": "คลังนักวิจัยและผู้เชี่ยวชาญ",
+      "expertsUnit": "ท่าน",
+      "expertsAvailable": "พร้อมร่วมงาน",
+      "expertsBreakdown": "นักวิจัยเทคโนโลยี {researchers} ท่าน • ที่ปรึกษา/โค้ช {coaches} ท่าน",
+      "standardTags": "คลังแท็กมาตรฐานในระบบ",
+      "tagsUnit": "แท็ก",
+      "viewAll": "ดูทั้งหมด →",
+      "clustersCovered": "ครอบคลุม 6 กลุ่มอุตสาหกรรม"
+    },
+    "clusters": {
+      "title": "การกระจายตัวของโจทย์ตามกลุ่มอุตสาหกรรม (Industry Cluster Distribution)",
+      "description": "สัดส่วนความต้องการของผู้ประกอบการที่เข้ามาในระบบจัดสรรตามกลุ่มเทคโนโลยี",
+      "projectsUnit": "โครงการ"
+    },
+    "tags": {
+      "topTagsTitle": "แท็กทักษะและเทคโนโลยียอดนิยม (Top Matched Technology Tags)"
+    },
+    "programs": {
+      "title": "แผนงานทุนเป้าหมาย (Programs)",
+      "description": "กรอบงบประมาณที่รองรับการจับคู่ความต้องการ",
+      "projectsUnit": "โครงการ",
+      "budgetLimit": "วงเงิน:"
+    },
+    "engine": {
+      "title": "สถานะสถาปัตยกรรมระบบ (Engine Status)",
+      "database": "Supabase PostgreSQL",
+      "ai": "Mock AI Matching Engine",
+      "online": "Online",
+      "active": "Active (0ms)"
+    },
+    "table": {
+      "title": "รายการโจทย์ความต้องการและการจับคู่ล่าสุด (Recent Matched Requirements)",
+      "description": "คลิกที่โครงการเพื่อเปิดดูหน้า Matching Workspace หรือปรับเปลี่ยนนักวิจัย/แหล่งทุน",
+      "viewAll": "ดูรายการโจทย์ทั้งหมด",
+      "empty": "ยังไม่มีโจทย์ความต้องการในระบบ สามารถคลิก \"เพิ่มความต้องการใหม่\" ด้านบนเพื่อเริ่มต้นได้ครับ",
+      "colProject": "โครงการ / สถานประกอบการ",
+      "colCluster": "กลุ่มอุตสาหกรรม",
+      "colResearcher": "นักวิจัยหลักที่จับคู่ได้",
+      "colFunding": "ทุนเป้าหมาย",
+      "colFit": "Fit Score",
+      "colAction": "การกระทำ",
+      "openWorkspace": "เปิด Workspace",
+      "analyzing": "กำลังวิเคราะห์...",
+      "pending": "Pending"
+    }
+  }
+}

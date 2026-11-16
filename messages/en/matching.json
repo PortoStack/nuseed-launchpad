@@ -1,0 +1,54 @@
+{
+  "matching": {
+    "changeRequirement": "Change Requirement",
+    "picker": {
+      "title": "Select a Requirement to start matching",
+      "description": "Find suitable researchers, coaches, advisors and funding for your requirement",
+      "search": "Search Requirements...",
+      "newRequirement": "New Requirement",
+      "view": "View matches",
+      "empty": "No matching requirements",
+      "statuses": { "draft": "Draft", "tagged": "Tagged", "need_review": "Needs review" }
+    },
+    "relations": {
+      "label": "Matching type",
+      "entrepreneur-researcher": "Entrepreneur–Researcher",
+      "entrepreneur-funding": "Entrepreneur–Funding",
+      "funding-researcher": "Funding–Researcher",
+      "funding-researcher-entrepreneur": "Funding–Researcher–Entrepreneur",
+      "empty": "No matches for this selection"
+    },
+    "title": "Matching Workspace",
+    "description": "Ranked researchers and open funding matched against this requirement, with the tags behind each score",
+    "noRequirementTitle": "Select a Requirement first",
+    "noRequirementDesc": "Open a Requirement and click \"Find Matches\" to see ranked researchers and funding here",
+    "backToRequirements": "Go to Requirements",
+    "requirementSummary": {
+      "needTypes": "Need Type",
+      "acceptedTags": "Accepted Tags"
+    },
+    "tabs": {
+      "researchers": "Researchers",
+      "coaches": "Coaches / Advisors",
+      "funding": "Funding"
+    },
+    "score": "Match Score",
+    "explain": {
+      "exact": "Exact",
+      "related": "Related",
+      "missing": "Missing"
+    },
+    "empty": {
+      "researchersTitle": "No matching researchers",
+      "researchersDesc": "No researcher's tags overlap with this requirement yet",
+      "fundingTitle": "No matching open funding",
+      "fundingDesc": "No open funding's tags overlap with this requirement yet",
+      "coachesTitle": "No matching coaches or advisors",
+      "coachesDesc": "No coach or advisor's tags overlap with this requirement yet",
+      "noAcceptedTagsTitle": "No accepted tags yet",
+      "noAcceptedTagsDesc": "This requirement has no accepted tags, so nothing can be matched. Review and accept tags on the requirement first."
+    },
+    "findMatches": "Find Matches",
+    "createDeal": "Create Deal"
+  }
+}
