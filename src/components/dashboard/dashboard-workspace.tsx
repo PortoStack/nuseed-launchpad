@@ -12,8 +12,6 @@ import {
   Users,
   Wallet,
   Calendar,
-  Home,
-  ChevronRight,
   User,
   Plus,
   Target,
@@ -139,14 +137,7 @@ export function DashboardWorkspace({ data, lang }: DashboardWorkspaceProps) {
 
   return (
     <div className="space-y-6 pb-20">
-      {/* 1. Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-muted-foreground">
-        <Home className="h-3.5 w-3.5" />
-        <ChevronRight className="h-3 w-3 text-muted-foreground/60" />
-        <span className="font-medium text-foreground">ภาพรวม</span>
-      </nav>
-
-      {/* 2. Page Header & Actions */}
+      {/* Page Header & Actions */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
           ค้นหาโครงการและนักวิจัย

@@ -196,7 +196,6 @@ export const dashboardService = {
         LEFT JOIN requirements r ON r.target_program = f.code
         GROUP BY f.id, f.code, f.title, f.support_ratio, f.max_budget
         ORDER BY requirement_count DESC, f.code ASC
-        LIMIT 4
       `;
 
       const programs: ProgramStat[] = programRows.map((p) => ({
@@ -249,7 +248,7 @@ export const dashboardService = {
         createdAt: r.created_at?.toISOString() || new Date().toISOString(),
       }));
 
-      // 8. Projects (Requirements in template format)
+      // 8. Projects (Requirements in database - strictly actual requirements only)
       const projectRows = await sql`
         SELECT r.id, r.project_title, r.company_name, r.target_program, r.budget, r.status, r.structure,
                r.assigned_researcher, r.created_at,
@@ -258,16 +257,7 @@ export const dashboardService = {
         LEFT JOIN requirement_tags rt ON rt.requirement_id = r.id
         LEFT JOIN tags t ON t.id = rt.tag_id
         GROUP BY r.id
-        ORDER BY 
-          CASE 
-            WHEN r.target_program = 'BI-2569-001' THEN 1
-            WHEN r.target_program = 'BI-2569-002' THEN 2
-            WHEN r.target_program = 'TI-2569-003' THEN 3
-            WHEN r.target_program = 'TI-2569-001' THEN 4
-            WHEN r.target_program = 'TI-2569-002' THEN 5
-            ELSE 6
-          END,
-          r.created_at ASC
+        ORDER BY r.created_at ASC
       `;
 
       const projects: ProjectItem[] = projectRows.map((r, index) => {
@@ -275,8 +265,8 @@ export const dashboardService = {
         const code =
           structure.code ||
           r.target_program ||
-          `PRJ-2569-${String(index + 1).padStart(3, "0")}`;
-        const totalBudget = Number(r.budget) || 500000;
+          `IRTC-2569-${String(index + 1).padStart(3, "0")}`;
+        const totalBudget = Number(r.budget) || 150000;
         const remainingBudget =
           structure.remainingBudget !== undefined
             ? Number(structure.remainingBudget)
@@ -317,7 +307,7 @@ export const dashboardService = {
         };
       });
 
-      // 9. Researchers (Researchers in template format)
+      // 9. Researchers (ALL researchers in database - no LIMIT)
       const researcherRows = await sql`
         SELECT r.id, r.name, r.faculty, r.discipline, r.role_key,
                COALESCE(array_agg(DISTINCT t.name) FILTER (WHERE t.name IS NOT NULL), '{}') as tags
@@ -325,46 +315,38 @@ export const dashboardService = {
         LEFT JOIN researcher_tags rt ON rt.researcher_id = r.id
         LEFT JOIN tags t ON t.id = rt.tag_id
         GROUP BY r.id
-        ORDER BY
-          CASE
-            WHEN r.name ILIKE '%ชัยวัฒน์%' THEN 1
-            WHEN r.name ILIKE '%ศุภชัย%' THEN 2
-            WHEN r.name ILIKE '%ธีรภัทร์%' THEN 3
-            WHEN r.name ILIKE '%วิภาวรรณ%' THEN 4
-            WHEN r.name ILIKE '%สมคิด%' THEN 5
-            WHEN r.name ILIKE '%นริศรา%' THEN 6
-            ELSE 7
-          END,
-          r.name ASC
-        LIMIT 10
+        ORDER BY r.name ASC
       `;
 
       const researchers: ResearcherItem[] = researcherRows.map((r, i) => {
         const initial = getThaiInitial(r.name);
         const avatarColorBg = AVATAR_COLORS[i % AVATAR_COLORS.length];
-        const isFeatured =
-          r.name.includes("ชัยวัฒน์") ||
-          r.name.includes("วิภาวรรณ") ||
-          r.name.includes("สมคิด") ||
-          r.name.includes("นริศรา");
+        const isAssigned =
+          projectRows.some(
+            (p) =>
+              p.assigned_researcher &&
+              p.assigned_researcher.includes(
+                r.name.replace(/^(ดร\.|นาย|นาง|นางสาว|ผศ\.|รศ\.|ศ\.|ภก\.|ภญ\.)\s*/, "")
+              )
+          );
 
         return {
           id: r.id,
           name: r.name,
-          role: "นักวิจัย",
+          role: r.role_key === "advisor" ? "อาจารย์ที่ปรึกษา" : "นักวิจัย",
           faculty: r.faculty || r.discipline || "มหาวิทยาลัยนเรศวร",
           discipline: r.discipline || "",
           avatarInitial: initial,
           avatarColorBg,
           tags: r.tags || [],
-          relatedProjectsCount: isFeatured ? 1 : 0,
+          relatedProjectsCount: isAssigned ? 1 : 0,
         };
       });
 
-      // 10. Funding Programs (Fundings in template format)
+      // 10. Funding Programs (ALL funding programs in database - no LIMIT)
       const fundingRows = await sql`
         SELECT f.id, f.code, f.title, f.source, f.support_ratio, f.max_budget::float as max_budget,
-               f.status, f.timeline,
+               f.status, f.open_period,
                COALESCE(array_agg(DISTINCT t.name) FILTER (WHERE t.name IS NOT NULL), '{}') as tags
         FROM funding_programs f
         LEFT JOIN funding_tags ft ON ft.funding_id = f.id
@@ -379,7 +361,6 @@ export const dashboardService = {
             ELSE 5
           END,
           f.title ASC
-        LIMIT 6
       `;
 
       const fundings: FundingItem[] = fundingRows.map((f) => ({
@@ -395,7 +376,7 @@ export const dashboardService = {
           (f.tags && f.tags.length > 0)
             ? f.tags
             : ["วิจัยและพัฒนา", "นวัตกรรมชุมชน", "SMEs"],
-        timeline: "เปิดรับตลอดปีงบประมาณ 2569",
+        timeline: f.open_period || "เปิดรับตลอดปีงบประมาณ 2569",
       }));
 
       return {
@@ -421,12 +402,12 @@ export const dashboardService = {
       console.error("dashboardService.getDashboardData error:", error);
       return {
         stats: {
-          totalRequirements: 5,
-          matchedRequirements: 2,
-          totalBudget: 5400000,
-          totalResearchers: 22,
-          researchersCount: 18,
-          coachesCount: 4,
+          totalRequirements: 2,
+          matchedRequirements: 1,
+          totalBudget: 350000,
+          totalResearchers: 16,
+          researchersCount: 13,
+          coachesCount: 3,
           totalTags: 48,
           averageFitScore: 0.94,
         },
