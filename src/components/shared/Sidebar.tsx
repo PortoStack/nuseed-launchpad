@@ -79,6 +79,12 @@ export function Sidebar({ className, onNavigate }: SidebarProps) {
           icon: <Target className="h-5 w-5" />,
           isActive: isMatching,
         },
+        {
+          name: t("items.newRequirement"),
+          href: `/${lang}/requirements/new`,
+          icon: <FilePlus className="h-5 w-5" />,
+          isActive: isNewRequirement,
+        },
       ],
     },
     {

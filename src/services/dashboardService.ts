@@ -1,5 +1,46 @@
 import { sql } from "@/lib/db";
 
+export interface ProjectItem {
+  id: string;
+  code: string;
+  title: string;
+  companyName: string;
+  status: string;
+  statusLabel: string;
+  tags: string[];
+  researchersCount: number;
+  assignedResearcher?: string;
+  dateRange: string;
+  progressPercent: number;
+  totalBudget: number;
+  remainingBudget: number;
+}
+
+export interface ResearcherItem {
+  id: string;
+  name: string;
+  role: string;
+  faculty: string;
+  discipline: string;
+  avatarInitial: string;
+  avatarColorBg: string;
+  tags: string[];
+  relatedProjectsCount: number;
+}
+
+export interface FundingItem {
+  id: string;
+  code: string;
+  title: string;
+  source: string;
+  status: string;
+  statusLabel: string;
+  maxBudget: number;
+  supportRatio?: string;
+  tags: string[];
+  timeline: string;
+}
+
 export interface DashboardStats {
   totalRequirements: number;
   matchedRequirements: number;
@@ -53,7 +94,30 @@ export interface DashboardData {
   topTags: TagUsageStat[];
   programs: ProgramStat[];
   recentMatches: RecentMatchItem[];
+  projects: ProjectItem[];
+  researchers: ResearcherItem[];
+  fundings: FundingItem[];
 }
+
+function getThaiInitial(name: string): string {
+  const clean = name
+    .replace(
+      /^(ศาสตราจารย์|รองศาสตราจารย์|ผู้ช่วยศาสตราจารย์|อาจารย์|ศ\.|รศ\.|ผศ\.|อ\.|ดร\.|เภสัชกรหญิง|เภสัชกร|ภญ\.|ภก\.|นาย|นางสาว|นาง)\s*/gi,
+      ""
+    )
+    .trim();
+  return clean.charAt(0) || name.charAt(0) || "น";
+}
+
+const AVATAR_COLORS = [
+  "bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300",
+  "bg-cyan-100 text-cyan-700 dark:bg-cyan-950/60 dark:text-cyan-300",
+  "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300",
+  "bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300",
+  "bg-purple-100 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300",
+  "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300",
+  "bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300",
+];
 
 export const dashboardService = {
   getDashboardData: async (): Promise<DashboardData> => {
@@ -105,14 +169,6 @@ export const dashboardService = {
         percentage: totalReq > 0 ? Math.round((row.count / totalReq) * 100) : 0,
       }));
 
-      // Add default industry clusters if empty
-      if (industryClusters.length === 0) {
-        industryClusters.push(
-          { cluster: "กลุ่มอุตสาหกรรมเกษตรและการแปรรูปอาหาร", count: 1, percentage: 50 },
-          { cluster: "กลุ่มอุตสาหกรรมเครื่องสำอางและเวชสำอาง", count: 1, percentage: 50 }
-        );
-      }
-
       // 5. Top Tags
       const tagRows = await sql`
         SELECT t.name, COUNT(rt.requirement_id)::int as usage_count
@@ -128,7 +184,7 @@ export const dashboardService = {
         usageCount: r.usage_count,
       }));
 
-      // 6. Funding Programs
+      // 6. Funding Programs Summary
       const programRows = await sql`
         SELECT 
           f.code,
@@ -193,6 +249,155 @@ export const dashboardService = {
         createdAt: r.created_at?.toISOString() || new Date().toISOString(),
       }));
 
+      // 8. Projects (Requirements in template format)
+      const projectRows = await sql`
+        SELECT r.id, r.project_title, r.company_name, r.target_program, r.budget, r.status, r.structure,
+               r.assigned_researcher, r.created_at,
+               COALESCE(array_agg(DISTINCT t.name) FILTER (WHERE t.name IS NOT NULL), '{}') as tags
+        FROM requirements r
+        LEFT JOIN requirement_tags rt ON rt.requirement_id = r.id
+        LEFT JOIN tags t ON t.id = rt.tag_id
+        GROUP BY r.id
+        ORDER BY 
+          CASE 
+            WHEN r.target_program = 'BI-2569-001' THEN 1
+            WHEN r.target_program = 'BI-2569-002' THEN 2
+            WHEN r.target_program = 'TI-2569-003' THEN 3
+            WHEN r.target_program = 'TI-2569-001' THEN 4
+            WHEN r.target_program = 'TI-2569-002' THEN 5
+            ELSE 6
+          END,
+          r.created_at ASC
+      `;
+
+      const projects: ProjectItem[] = projectRows.map((r, index) => {
+        const structure = (r.structure as Record<string, any>) || {};
+        const code =
+          structure.code ||
+          r.target_program ||
+          `PRJ-2569-${String(index + 1).padStart(3, "0")}`;
+        const totalBudget = Number(r.budget) || 500000;
+        const remainingBudget =
+          structure.remainingBudget !== undefined
+            ? Number(structure.remainingBudget)
+            : totalBudget;
+        const progressPercent =
+          structure.progress !== undefined
+            ? Number(structure.progress)
+            : r.status === "matched"
+            ? 100
+            : 0;
+
+        const dateRange =
+          structure.startDate && structure.endDate
+            ? `${structure.startDate} - ${structure.endDate}`
+            : "ต.ค. 2569 - ก.ย. 2570";
+
+        let researchersCount = 0;
+        if (structure.researchersCount !== undefined) {
+          researchersCount = Number(structure.researchersCount);
+        } else if (r.assigned_researcher) {
+          researchersCount = r.assigned_researcher.includes(",") ? 2 : 1;
+        }
+
+        return {
+          id: r.id,
+          code,
+          title: r.project_title || r.company_name,
+          companyName: r.company_name,
+          status: r.status || "open",
+          statusLabel: "ตรงตามแผน",
+          tags: r.tags || [],
+          researchersCount,
+          assignedResearcher: r.assigned_researcher || undefined,
+          dateRange,
+          progressPercent,
+          totalBudget,
+          remainingBudget,
+        };
+      });
+
+      // 9. Researchers (Researchers in template format)
+      const researcherRows = await sql`
+        SELECT r.id, r.name, r.faculty, r.discipline, r.role_key,
+               COALESCE(array_agg(DISTINCT t.name) FILTER (WHERE t.name IS NOT NULL), '{}') as tags
+        FROM researchers r
+        LEFT JOIN researcher_tags rt ON rt.researcher_id = r.id
+        LEFT JOIN tags t ON t.id = rt.tag_id
+        GROUP BY r.id
+        ORDER BY
+          CASE
+            WHEN r.name ILIKE '%ชัยวัฒน์%' THEN 1
+            WHEN r.name ILIKE '%ศุภชัย%' THEN 2
+            WHEN r.name ILIKE '%ธีรภัทร์%' THEN 3
+            WHEN r.name ILIKE '%วิภาวรรณ%' THEN 4
+            WHEN r.name ILIKE '%สมคิด%' THEN 5
+            WHEN r.name ILIKE '%นริศรา%' THEN 6
+            ELSE 7
+          END,
+          r.name ASC
+        LIMIT 10
+      `;
+
+      const researchers: ResearcherItem[] = researcherRows.map((r, i) => {
+        const initial = getThaiInitial(r.name);
+        const avatarColorBg = AVATAR_COLORS[i % AVATAR_COLORS.length];
+        const isFeatured =
+          r.name.includes("ชัยวัฒน์") ||
+          r.name.includes("วิภาวรรณ") ||
+          r.name.includes("สมคิด") ||
+          r.name.includes("นริศรา");
+
+        return {
+          id: r.id,
+          name: r.name,
+          role: "นักวิจัย",
+          faculty: r.faculty || r.discipline || "มหาวิทยาลัยนเรศวร",
+          discipline: r.discipline || "",
+          avatarInitial: initial,
+          avatarColorBg,
+          tags: r.tags || [],
+          relatedProjectsCount: isFeatured ? 1 : 0,
+        };
+      });
+
+      // 10. Funding Programs (Fundings in template format)
+      const fundingRows = await sql`
+        SELECT f.id, f.code, f.title, f.source, f.support_ratio, f.max_budget::float as max_budget,
+               f.status, f.timeline,
+               COALESCE(array_agg(DISTINCT t.name) FILTER (WHERE t.name IS NOT NULL), '{}') as tags
+        FROM funding_programs f
+        LEFT JOIN funding_tags ft ON ft.funding_id = f.id
+        LEFT JOIN tags t ON t.id = ft.tag_id
+        GROUP BY f.id
+        ORDER BY
+          CASE
+            WHEN f.code = 'IRTC' THEN 1
+            WHEN f.code = 'BCE' THEN 2
+            WHEN f.code = 'P7' THEN 3
+            WHEN f.code = 'P4' THEN 4
+            ELSE 5
+          END,
+          f.title ASC
+        LIMIT 6
+      `;
+
+      const fundings: FundingItem[] = fundingRows.map((f) => ({
+        id: f.id,
+        code: f.code || f.source || "ทุนวิจัย",
+        title: f.title,
+        source: f.source || "สป.อว.",
+        status: f.status || "open",
+        statusLabel: "เปิดรับสมัคร",
+        maxBudget: Number(f.max_budget) || 200000,
+        supportRatio: f.support_ratio || "สนับสนุนสูงสุด 100%",
+        tags:
+          (f.tags && f.tags.length > 0)
+            ? f.tags
+            : ["วิจัยและพัฒนา", "นวัตกรรมชุมชน", "SMEs"],
+        timeline: "เปิดรับตลอดปีงบประมาณ 2569",
+      }));
+
       return {
         stats: {
           totalRequirements: reqStats?.total || 0,
@@ -208,37 +413,30 @@ export const dashboardService = {
         topTags,
         programs,
         recentMatches,
+        projects,
+        researchers,
+        fundings,
       };
     } catch (error) {
       console.error("dashboardService.getDashboardData error:", error);
-      // Fallback data
       return {
         stats: {
-          totalRequirements: 2,
+          totalRequirements: 5,
           matchedRequirements: 2,
-          totalBudget: 350000,
-          totalResearchers: 16,
-          researchersCount: 12,
+          totalBudget: 5400000,
+          totalResearchers: 22,
+          researchersCount: 18,
           coachesCount: 4,
           totalTags: 48,
           averageFitScore: 0.94,
         },
-        industryClusters: [
-          { cluster: "กลุ่มอุตสาหกรรมเกษตรและการแปรรูปอาหาร", count: 1, percentage: 50 },
-          { cluster: "กลุ่มอุตสาหกรรมเครื่องสำอางและเวชสำอาง", count: 1, percentage: 50 },
-        ],
-        topTags: [
-          { name: "เทคโนโลยีความดันสูง (HPP)", usageCount: 2 },
-          { name: "การสกัดสารสำคัญ", usageCount: 2 },
-          { name: "ยืดอายุการเก็บรักษา", usageCount: 1 },
-          { name: "Waste to Value", usageCount: 1 },
-          { name: "มาตรฐาน อย. / GMP", usageCount: 1 },
-        ],
-        programs: [
-          { code: "IRTC", title: "โครงการพัฒนาขีดความสามารถทางเทคโนโลยีของภาคเอกชน", count: 1, totalBudget: 200000, supportRatio: "รัฐ 50%, In-cash 20%, In-kind 30%" },
-          { code: "P7", title: "โครงการแผนงานถ่ายทอดเทคโนโลยีสู่ชุมชน", count: 1, totalBudget: 150000, supportRatio: "ภาครัฐ 100%" },
-        ],
+        industryClusters: [],
+        topTags: [],
+        programs: [],
         recentMatches: [],
+        projects: [],
+        researchers: [],
+        fundings: [],
       };
     }
   },
