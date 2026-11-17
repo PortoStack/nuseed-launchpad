@@ -20,8 +20,14 @@ export default async function middleware(request: NextRequest) {
 
   // 2. Parse language prefix (e.g. /th/matching -> locale='th', subPath='/matching')
   const localeMatch = pathname.match(/^\/(th|en)(\/.*)?$/);
-  const locale = localeMatch ? localeMatch[1] : "th";
-  const subPath = localeMatch && localeMatch[2] ? localeMatch[2] : "/";
+
+  // If path does not have locale prefix, run intlMiddleware to redirect to /th/... or /en/...
+  if (!localeMatch) {
+    return intlMiddleware(request);
+  }
+
+  const locale = localeMatch[1];
+  const subPath = localeMatch[2] || "/";
 
   // 3. Check if route is public
   const isAuthPage = subPath === "/login" || subPath.startsWith("/login");
@@ -63,6 +69,6 @@ export default async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Match internationalized pathnames and root
-  matcher: ["/", "/(th|en)/:path*"],
+  // Match internationalized pathnames, root, and any un-prefixed app paths
+  matcher: ["/", "/(th|en)/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
 };
