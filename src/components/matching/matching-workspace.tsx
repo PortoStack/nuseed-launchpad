@@ -377,7 +377,9 @@ function ResearchersTab({
                         ""
                       )
                     )) && (
-
+                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 px-2 py-0.5 text-[11px] font-semibold">
+                      ★ {lang === "th" ? "นักวิจัยที่ปรึกษาตามข้อเสนอ" : "Assigned in Proposal"}
+                    </span>
                   )}
               </div>
               <p className="text-muted-foreground text-xs mt-0.5">
