@@ -187,7 +187,11 @@ export function mockAnalyzeMatch(input: AnalyzeMatchInput): GeminiMatchAnalysis 
   // 2. Compute dynamic fit score based on text alignment
   const overlapBonus = Math.min(0.08, maxDomainMatches * 0.02);
   const baseScore = 0.86 + overlapBonus;
-  const fitScore = Math.min(0.98, Number(baseScore.toFixed(2)));
+  // deterministic variation based on researcher name length and requirement title length
+  const nameFactor = (input.researcherName.length % 5) * 0.01; // 0.00‑0.04
+  const titleFactor = ((input.requirementTitle?.length ?? 0) % 5) * 0.005; // 0.00‑0.02
+  const fitScore = Math.min(0.98, Number((baseScore + nameFactor + titleFactor).toFixed(2)));
+
 
   const scoreBreakdown = {
     expertiseAlignment: Math.min(0.98, Number((domainConfig.defaultBreakdown.exp + overlapBonus * 0.5).toFixed(2))),
