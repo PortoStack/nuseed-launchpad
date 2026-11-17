@@ -252,13 +252,16 @@ export const dashboardService = {
       const projectRows = await sql`
         SELECT r.id, r.project_title, r.company_name, r.target_program, r.budget, r.status, r.structure,
                r.assigned_researcher, r.created_at,
-               COALESCE(array_agg(DISTINCT t.name) FILTER (WHERE t.name IS NOT NULL), '{}') as tags
+               COALESCE(array_agg(DISTINCT t.name) FILTER (WHERE t.name IS NOT NULL), '{}') as tags,
+               MAX(am.fit_score) as fit_score
         FROM requirements r
         LEFT JOIN requirement_tags rt ON rt.requirement_id = r.id
         LEFT JOIN tags t ON t.id = rt.tag_id
+        LEFT JOIN ai_match_results am ON am.requirement_id = r.id AND am.is_selected = true
         GROUP BY r.id
         ORDER BY r.created_at ASC
       `;
+
 
       const projects: ProjectItem[] = projectRows.map((r, index) => {
         const structure = (r.structure as Record<string, any>) || {};
@@ -272,7 +275,9 @@ export const dashboardService = {
             ? Number(structure.remainingBudget)
             : totalBudget;
         const progressPercent =
-          structure.progress !== undefined
+          r.fit_score !== undefined
+            ? Math.round(Number(r.fit_score) * 100)
+            : structure.progress !== undefined
             ? Number(structure.progress)
             : r.status === "matched"
             ? 100
@@ -299,7 +304,7 @@ export const dashboardService = {
           statusLabel: "ตรงตามแผน",
           tags: r.tags || [],
           researchersCount,
-          assignedResearcher: r.assigned_researcher || undefined,
+          assignedResearcher: r.assigned_researcher ? r.assigned_researcher.replace(/\s*\(.*\)$/, "").trim() : undefined,
           dateRange,
           progressPercent,
           totalBudget,
@@ -333,7 +338,7 @@ export const dashboardService = {
         return {
           id: r.id,
           name: r.name,
-          role: r.role_key === "advisor" ? "อาจารย์ที่ปรึกษา" : "นักวิจัย",
+          role: "นักวิจัย",
           faculty: r.faculty || r.discipline || "มหาวิทยาลัยนเรศวร",
           discipline: r.discipline || "",
           avatarInitial: initial,
