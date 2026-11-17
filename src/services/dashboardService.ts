@@ -274,14 +274,7 @@ export const dashboardService = {
           structure.remainingBudget !== undefined
             ? Number(structure.remainingBudget)
             : totalBudget;
-        const progressPercent =
-          r.fit_score !== undefined
-            ? Math.round(Number(r.fit_score) * 100)
-            : structure.progress !== undefined
-            ? Number(structure.progress)
-            : r.status === "matched"
-            ? 100
-            : 0;
+        const progressPercent = 0;
 
         const dateRange =
           structure.startDate && structure.endDate

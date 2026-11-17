@@ -1,5 +1,7 @@
 # 🚀 NU SEED Launchpad — Tag Matching & AI Transfer Platform
 
+<!-- Redeploy trigger -->
+
 ระบบ **Tag Matching** และ **Tag Review / Catalog** ที่ถอดแบบ UI จาก `NUSEEDBITI` 100% พัฒนาด้วย **Next.js 16 (App Router)**, เชื่อมต่อฐานข้อมูล **Supabase (PostgreSQL)** ด้วย **Raw SQL** (ไม่ใช้ ORM) พร้อมระบบ **.sql Migration** และยกระดับการจับคู่ด้วย **Gemini AI Semantic Analysis**
 
 ---
